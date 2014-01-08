@@ -5,6 +5,8 @@ require 'dm-core'
 require 'dm-migrations'
 require 'dm-types'
 require 'dm-postgres-adapter'
+require 'oj'
+require 'csv'
 
 # lib
 require 'dm-postgres-types/property/pg_array'
