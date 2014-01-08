@@ -5,7 +5,7 @@ require 'dm-postgres-types/version'
 
 Gem::Specification.new do |gem|
   gem.name          = "dm-postgres-types"
-  gem.version       = Dm::Postgres::Types::VERSION
+  gem.version       = DataMapper::PostgresTypes::VERSION
   gem.authors       = ["Eric Marden"]
   gem.email         = ["eric@xentek.net"]
   gem.summary       = %q{Adds support for native PostgreSQL datatypes to DataMapper}
@@ -24,6 +24,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'dm-validations', '~> 1.2.0'
   gem.add_dependency 'dm-postgres-adapter', '~> 1.2.0'
 
-  gem.add_development_dependency "bundler", "~> 1.5"
-  gem.add_development_dependency "rake"
+  gem.add_development_dependency 'bundler'
+  gem.add_development_dependency 'rake'
+  gem.add_development_dependency 'gem-release'
 end
