@@ -7,17 +7,17 @@ module DataMapper
     class PgHStore < Object
       def load(value)
         return nil unless value
-        values = value.split(",")
-        values.map! { |val| unescape_pg_hash(val) }
-        values.map! { |key, val| [key, unescape_nil(val)] }
+        values = value.split(", ")
+        values.map! do |val|
+          k, v = val.split("=>")
+          [unescape_double_quote(k),unescape_double_quote(unescape_nil(v))]
+        end
         Hash[*(values.flatten)]
       end
 
       def dump(value)
         return "" unless value
-        value.map! do |idx, val|
-          [escape_double_quote(idx), escape_value(val)].join(",")
-        end
+        value.map { |key, val| %Q{"#{key.to_s}"=>"#{escape_nil(val)}"} }.join(", ")
       end
 
       private
@@ -30,29 +30,10 @@ module DataMapper
         (value == 'NULL') ? nil : value
       end
 
-      def escape_double_quote(value)
-        value.gsub!(/"/, '\"')
-        value
-      end
-
       def unescape_double_quote(value)
         value.gsub!('"','')
         value.strip!
         value
-      end
-
-      def escape_pg_hash(value)
-        (value =~ /[,\s=>]/ || value.empty?) ? %Q{"#{value}"} : value
-      end
-
-      def unescape_pg_hash(value)
-        values = value.split("=>")
-        values.map! { |val| unescape_double_quote(val) }
-        values
-      end
-
-      def escape_value(value)
-        escape_double_quote(escape_nil(escape_pg_hash(value)))
       end
     end
   end
