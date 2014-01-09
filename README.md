@@ -39,7 +39,7 @@ m.elements
 # => ["abc", "def"]
 ````
 
-Use this property when you want to store an array of strings. This property dosn't have any options.
+Use this property when you want to store an array of strings. This property doesn't have any options.
 
 ---
 
@@ -84,7 +84,7 @@ m.things
 # => { "a" => "bcd", "e" => "fgh" }
 ````
 
-Use this property when you want to store simple hash values. This property dosn't have any options. 
+Use this property when you want to store simple hash values. This property doesn't have any options. 
 
 Please note: All hash keys will be returned as strings when your hash is loaded from the database, even if you supplied a hash with symbol keys when you saved it. If this is undesired, check out the `Hash#symbolize_keys` method provided by `ActiveSupport` ([link](http://rubygems.org/gems/activesupport)).
 
@@ -118,3 +118,10 @@ Please note: JSON de/serializtion is being handled by the `Oj` gem, which is the
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+## Shout Outs
+
+This library is heavily inspired by and borrows ideas and sometimes code from:
+ - `dm-pg-types` ([More Info](https://github.com/svs/dm-pg-types))
+ - `dm-types` ([More Info](https://github.com/svs/dm-types))
+ - `dm-pg-json` ([More Info](https://github.com/styleseek/dm-pg-json))
