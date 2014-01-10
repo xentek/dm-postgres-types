@@ -22,10 +22,10 @@ module DataMapper
       def property_schema_hash(property)
         schema = super
 
-        if property.kind_of?(Property::DecimalArray)
+        if property.kind_of?(Property::PgNumericArray)
           schema[:primitive] = "#{schema[:primitive]}(#{property.precision},#{property.scale})[]"
           schema[:precision] = schema[:scale] = nil
-        elsif property.kind_of?(Property::StringArray)
+        elsif property.kind_of?(Property::PgArray)
           schema[:primitive] = "#{schema[:primitive]}[]"
           schema[:length] = nil
         elsif property.kind_of?(Property::PgJSON)
