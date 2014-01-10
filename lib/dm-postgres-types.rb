@@ -45,9 +45,9 @@ module DataMapper
     module ClassMethods
       def type_map
         postgres_types = { 
-          Property::HStore => { primitive: 'HSTORE' },
-          Property::DecimalArray => { primitive: "NUMERIC" },
-          Property::StringArray => { primitive: "TEXT" },
+          Property::PgHStore => { primitive: 'HSTORE' },
+          Property::PgNumericArray => { primitive: "NUMERIC" },
+          Property::PgArray => { primitive: "TEXT" },
           Property::PgJSON => { primitive: 'JSON' }
         }
         super.merge(postgres_types).freeze
