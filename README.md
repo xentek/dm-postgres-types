@@ -122,6 +122,6 @@ Please note: JSON de/serializtion is being handled by the `Oj` gem, which is the
 ## Shout Outs
 
 This library is heavily inspired by and borrows ideas and sometimes code from:
- - `dm-pg-types` ([More Info](https://github.com/svs/dm-pg-types))
- - `dm-types` ([More Info](https://github.com/svs/dm-types))
- - `dm-pg-json` ([More Info](https://github.com/styleseek/dm-pg-json))
+ - [dm-pg-types](https://github.com/svs/dm-pg-types)
+ - [dm-types](https://github.com/datamapper/dm-types)
+ - [dm-pg-json](https://github.com/styleseek/dm-pg-json)
