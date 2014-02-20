@@ -52,7 +52,7 @@ class MyModel
   include DataMapper::Resource
 
   property :id, Serial
-  property :decimals, PgNumericArray, scale: 5, precision: 10
+  property :decimals, PgNumericArray, scale: 5, precision: 2
 end
 
 m = MyModel.new(decimals: [1.13, 2.19, 5.11])
