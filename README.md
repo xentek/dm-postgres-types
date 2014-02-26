@@ -67,7 +67,7 @@ The default percision is `10` and the default scale is `0`, which is suitable fo
 
 ---
 
-### DataMapper::Property::PgArray
+### DataMapper::Property::PgHStore
 
 Example:
 
