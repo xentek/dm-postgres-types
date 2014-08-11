@@ -18,7 +18,7 @@ module DataMapper
         when ::NilClass, ::String
           value
         when ::Hash, ::Array
-          Oj.dump(value, mode: :compat)
+          MultiJson.dump(value, mode: :compat)
         else
           '{}'
         end
@@ -27,9 +27,9 @@ module DataMapper
       def load(value)
         case value
         when ::Hash, ::Array
-          (load_raw_value) ? Oj.dump(value, mode: :compat) : value
+          (load_raw_value) ? MultiJson.dump(value, mode: :compat) : value
         when ::String
-          (load_raw_value) ? value : Oj.load(value)
+          (load_raw_value) ? value : MultiJson.load(value)
         else
           (load_raw_value) ? '{}' : {}
         end

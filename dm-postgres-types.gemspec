@@ -23,7 +23,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'dm-types', '~> 1.2.0'
   gem.add_dependency 'dm-validations', '~> 1.2.0'
   gem.add_dependency 'dm-postgres-adapter', '~> 1.2.0'
-  gem.add_dependency 'oj'
+  gem.add_dependency 'multi_json'
 
   gem.add_development_dependency 'bundler'
   gem.add_development_dependency 'rake'

@@ -109,7 +109,7 @@ m.things
 
 Use this property when you want to store your value, serialized as JSON. By default, the value will be deserialized back into a ruby datatype (e.g. `Hash` or `Array`) when loaded from the database. Set the `:load_raw_value` to `true`, as shown above, to get the raw JSON value as a string instead.
 
-Please note: JSON de/serializtion is being handled by the `Oj` gem, which is the fastest implementation for ruby that you can find. There are no immediate plans to add the overhead of `MultiJSON` to this library. With that said, there shouldn't be any conflicts with other JSON libraries you maybe using in your project.
+Please note: As of release 0.1.0, JSON de/serialization is now being handled by the `MultiJSON` gem for compatibility with the widest range of ruby interpreters. For best performance, the preferred implementation is the `Oj` gem.
 
 ## Contributing
 
