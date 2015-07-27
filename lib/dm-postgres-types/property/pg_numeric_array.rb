@@ -18,7 +18,7 @@ module DataMapper
           raise ArgumentError, "precision must be greater than 0"
         end
 
-        if scale <= 0
+        if scale < 0
           raise ArgumentError, "scale must be greater than or equal to 0"
         end        
       end
