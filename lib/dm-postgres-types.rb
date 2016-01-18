@@ -11,6 +11,7 @@ require 'csv'
 # lib
 require 'dm-postgres-types/property/pg_array'
 require 'dm-postgres-types/property/pg_numeric_array'
+require 'dm-postgres-types/property/pg_integer_array'
 require 'dm-postgres-types/property/pg_hstore'
 require 'dm-postgres-types/property/pg_json'
 require 'dm-postgres-types/version'
@@ -47,6 +48,7 @@ module DataMapper
         postgres_types = { 
           Property::PgHStore => { primitive: 'HSTORE' },
           Property::PgNumericArray => { primitive: "NUMERIC" },
+          Property::PgIntegerArray => { primitive: "INTEGER" },
           Property::PgArray => { primitive: "TEXT" },
           Property::PgJSON => { primitive: 'JSON' }
         }
