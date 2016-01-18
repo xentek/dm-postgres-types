@@ -67,6 +67,26 @@ The default percision is `10` and the default scale is `0`, which is suitable fo
 
 ---
 
+### DataMapper::Property::PgIntegerArray
+
+Example:
+
+````ruby
+class MyModel
+  include DataMapper::Resource
+
+  property :id, Serial
+  property :integers, PgIntegerArray
+end
+
+m = MyModel.new(integers: [4, 8, 15, 16, 23, 42])
+m.integers
+# => [4, 8, 15, 16, 23, 42]
+````
+Use this property when you want to store an array of integers (not numerics, so no type conversions).
+
+---
+
 ### DataMapper::Property::PgHStore
 
 Example:
