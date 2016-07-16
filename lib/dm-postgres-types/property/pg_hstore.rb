@@ -17,10 +17,14 @@ module DataMapper
 
       def dump(value)
         return "" unless value
-        value.map { |key, val| %Q{"#{key.to_s}"=>"#{escape_nil(val)}"} }.join(", ")
+        value.map { |key, val| %Q{"#{key.to_s}"=>"#{escape(val)}"} }.join(", ")
       end
 
       private
+
+      def escape(value)
+        escape_nil(value).to_s.gsub("\\", "\\\\\\\\")
+      end
 
       def escape_nil(value)
         (value.nil?) ? 'NULL' : value
