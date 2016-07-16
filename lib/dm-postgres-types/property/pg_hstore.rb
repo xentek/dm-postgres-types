@@ -31,8 +31,8 @@ module DataMapper
       end
 
       def unescape_double_quote(value)
-        value.gsub!('"','')
-        value.strip!
+        value.gsub!('"','') if value.respond_to?(:gsub!)
+        value.strip! if value.respond_to?(:strip!)
         value
       end
     end
