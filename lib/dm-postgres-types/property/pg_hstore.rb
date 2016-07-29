@@ -5,6 +5,8 @@ require 'dm-core'
 module DataMapper
   class Property
     class PgHStore < Object
+      HSTORE_ESCAPED = /[,\s=>\\]/
+
       def load(value)
         return nil unless value
         values = value.split(", ")
@@ -17,13 +19,28 @@ module DataMapper
 
       def dump(value)
         return "" unless value
-        value.map { |key, val| %Q{"#{key.to_s}"=>"#{escape_nil(val)}"} }.join(", ")
+        value.map do |key, val|
+          "%s=>%s" % [hstore_escape(key), hstore_escape(val)]
+        end * ","
       end
 
       private
 
-      def escape_nil(value)
-        (value.nil?) ? 'NULL' : value
+      def hstore_escape(str)
+        return "NULL" if str.nil?
+
+        str = str.to_s.dup
+        # backslash is an escape character for strings, and an escape character for gsub, so you need 6 backslashes to get 2 in the output.
+        # see http://stackoverflow.com/questions/1542214/weird-backslash-substitution-in-ruby for the gory details
+        str.gsub!(/\\/, '\\\\\\')
+        # escape backslashes before injecting more backslashes
+        str.gsub!(/"/, '\"')
+
+        if str =~ HSTORE_ESCAPED or str.empty?
+          str = '"%s"' % str
+        end
+
+        str
       end
 
       def unescape_nil(value)
@@ -31,8 +48,8 @@ module DataMapper
       end
 
       def unescape_double_quote(value)
-        value.gsub!('"','')
-        value.strip!
+        value.gsub!('"','') if value.respond_to?(:gsub!)
+        value.strip! if value.respond_to?(:strip!)
         value
       end
     end
