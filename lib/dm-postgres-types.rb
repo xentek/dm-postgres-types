@@ -5,7 +5,7 @@ require 'dm-core'
 require 'dm-migrations'
 require 'dm-types'
 require 'dm-postgres-adapter'
-require 'oj'
+require 'multi_json'
 require 'csv'
 
 # lib
